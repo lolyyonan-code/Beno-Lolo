@@ -6,156 +6,128 @@
     <title>دعوة زفاف بيمن & ايلاريا</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --pink: #ffc0cb;
-            --white: #ffffff;
-            --black: #000000;
-        }
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: #ffffff; font-family: 'Cairo', sans-serif; }
 
-        body, html {
-            margin: 0; padding: 0; height: 100%; overflow: hidden;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        /* شاشة الغلاف (الأبيض والورد) */
+        /* شاشة الغلاف */
         #envelope {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--white);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 100; transition: transform 1.5s ease-in-out;
+            background: #ffffff; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 100;
         }
 
-        /* تأثير تساقط الورد */
+        /* الورد المتساقط */
         .petal {
-            position: absolute; top: -10%;
-            background-color: var(--pink);
-            border-radius: 150% 0 150% 0;
-            opacity: 0.7; animation: fall linear infinite;
+            position: absolute; top: -20px; background-color: #ffc0cb;
+            border-radius: 150% 0 150% 0; opacity: 0.6;
+            animation: fall linear infinite; z-index: 99;
         }
-
         @keyframes fall {
             to { transform: translateY(110vh) rotate(360deg); }
         }
 
         #open-btn {
-            padding: 15px 40px; font-size: 24px; cursor: pointer;
-            background: var(--pink); border: none; border-radius: 25px;
-            font-family: 'Cairo', sans-serif; color: var(--black);
-            z-index: 101; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 15px 50px; font-size: 22px; cursor: pointer;
+            background: #ffc0cb; border: none; border-radius: 30px;
+            font-family: 'Cairo', sans-serif; color: #000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 102;
+            transition: 0.3s;
         }
 
-        /* انقسام الشاشة */
-        .split-left, .split-right {
+        /* انقسام الشاشة عند الفتح */
+        .door {
             position: absolute; top: 0; width: 50%; height: 100%;
-            background: white; transition: 1.5s;
+            background: white; transition: 1.5s ease-in-out; z-index: 101;
         }
-        .split-left { left: 0; border-right: 1px solid #eee; }
-        .split-right { right: 0; }
+        .left-door { left: 0; border-right: 1px solid #fdf2f4; }
+        .right-door { right: 0; }
 
-        .opened .split-left { transform: translateX(-100%); }
-        .opened .split-right { transform: translateX(100%); }
+        .opened .left-door { transform: translateX(-100%); }
+        .opened .right-door { transform: translateX(100%); }
+        .opened #open-btn { display: none; }
 
-        /* محتوى الدعوة */
+        /* محتوى الدعوة الثابت بالخلف */
         #invitation-card {
-            background: #fffafa; /* أبيض مائل للوردي خفيف جداً */
-            height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            color: var(--black); padding: 20px;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; background: #fffcfd;
+            padding: 20px; box-sizing: border-box;
         }
 
-        .verse { font-family: 'Amiri', serif; font-size: 1.8rem; margin-bottom: 20px; color: #555; }
-        .names { font-size: 2.5rem; font-weight: bold; margin: 15px 0; }
-        .details { font-size: 1.2rem; line-height: 1.8; }
-        
-        .countdown {
-            font-size: 1rem; margin-top: 20px; background: var(--pink);
-            padding: 5px 15px; border-radius: 10px;
+        .verse { font-family: 'Amiri', serif; font-size: 1.5rem; color: #444; margin-bottom: 20px; line-height: 1.6; }
+        .names { font-size: 2.2rem; font-weight: bold; color: #000; margin: 10px 0; }
+        .details { font-size: 1.1rem; line-height: 1.8; color: #333; }
+        .location-btn {
+            display: inline-block; margin-top: 10px; padding: 5px 15px;
+            background: #fff; border: 1px solid #ffc0cb; border-radius: 15px;
+            color: #d02090; text-decoration: none; font-size: 0.9rem;
         }
-
-        .location-link {
-            display: inline-block; margin-top: 10px; color: #d02090;
-            text-decoration: none; font-weight: bold; font-size: 0.9rem;
-        }
-
-        /* إخفاء مشغل يوتيوب */
-        #player { display: none; }
+        .countdown { margin-top: 25px; font-size: 0.9rem; color: #888; border-top: 1px solid #eee; padding-top: 10px; }
     </style>
 </head>
 <body>
 
-    <div id="player"></div>
+    <iframe id="youtube-audio" width="0" height="0" src="https://www.youtube.com/embed/49kzVeoM7Ro?enablejsapi=1" frameborder="0"></iframe>
 
     <div id="envelope">
-        <div class="split-left"></div>
-        <div class="split-right"></div>
-        <button id="open-btn" onclick="openInvitation()">OPEN</button>
-        </div>
+        <div class="door left-door"></div>
+        <div class="door right-door"></div>
+        <button id="open-btn" onclick="startEverything()">Open</button>
+    </div>
 
     <div id="invitation-card">
         <div class="verse">"فَالَّذِي جَمَعَهُ اللهُ لَا يُفَرِّقُهُ إِنْسَانٌ" (مت 19: 5-6)</div>
         <div class="names">بيمن & ايلاريا</div>
         <div class="details">
-            <p>يتشرفون بدعوتكم لحفل الزفاف</p>
-            <p>يوم الخميس 17/9/2026 الساعة 8 مساءً</p>
-            <p>كنيسة رئيس الملائكة ميخائيل <br> <a class="location-link" href="https://maps.google.com/?q=كنيسة+رئيس+الملائكة+ميخائيل" target="_blank">📍 موقع الكنيسة</a></p>
-            <p>قاعة رويال بلازا (دار ضباط الأمن المركزي) <br> <a class="location-link" href="https://maps.google.com/?q=قاعة+رويال+بلازا" target="_blank">📍 موقع القاعة</a></p>
+            يتشرفون بدعوتكم لحفل الزفاف <br>
+            <b>يوم الخميس 17/9/2026 الساعة 8 مساءً</b> <br><br>
+            كنيسة رئيس الملائكة ميخائيل <br>
+            <a class="location-btn" href="https://maps.google.com/?q=كنيسة+رئيس+الملائكة+ميخائيل" target="_blank">📍 موقع الكنيسة</a> <br><br>
+            قاعة رويال بلازا (دار ضباط الأمن المركزي) <br>
+            <a class="location-btn" href="https://maps.google.com/?q=قاعة+رويال+بلازا" target="_blank">📍 موقع القاعة</a>
         </div>
-        
-        <div class="countdown" id="timer">جارٍ التحميل...</div>
+        <div class="countdown" id="timer"></div>
     </div>
 
     <script>
-        // إنشاء تساقط الورد
+        // دالة إنشاء الورد المتساقط تلقائياً
         function createPetals() {
-            const envelope = document.getElementById('envelope');
-            for (let i = 0; i < 30; i++) {
+            const container = document.getElementById('envelope');
+            for (let i = 0; i < 40; i++) {
                 const petal = document.createElement('div');
                 petal.className = 'petal';
                 petal.style.left = Math.random() * 100 + 'vw';
-                petal.style.width = petal.style.height = (Math.random() * 15 + 5) + 'px';
-                petal.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                const size = (Math.random() * 15 + 10) + 'px';
+                petal.style.width = size;
+                petal.style.height = size;
+                petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
                 petal.style.animationDelay = Math.random() * 5 + 's';
-                envelope.appendChild(petal);
+                container.appendChild(petal);
             }
         }
         createPetals();
 
-        // فتح الدعوة وتشغيل الموسيقى
-        function openInvitation() {
+        // دالة الفتح وتشغيل الموسيقى
+        function startEverything() {
             document.getElementById('envelope').classList.add('opened');
+            
+            // تشغيل الموسيقى عبر الـ Iframe API
+            const iframe = document.getElementById('youtube-audio');
+            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+
+            // إخفاء الغلاف تماماً بعد انتهاء الحركة
             setTimeout(() => {
-                document.getElementById('envelope').style.display = 'none';
+                document.getElementById('envelope').style.zIndex = "-1";
             }, 1500);
-            player.playVideo();
         }
 
-        // عد تنازلي صغير
-        const weddingDate = new Date("Sept 17, 2026 20:00:00").getTime();
-        setInterval(function() {
+        // عد تنازلي بسيط
+        const targetDate = new Date("September 17, 2026 20:00:00").getTime();
+        setInterval(() => {
             const now = new Date().getTime();
-            const diff = weddingDate - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("timer").innerHTML = `باقي ${days} يوم و ${hours} ساعة`;
+            const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("timer").innerHTML = `متبقي على الفرح ${days} يوم`;
         }, 1000);
-
-        // تشغيل أغنية يوتيوب في الخلفية
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '0', width: '0',
-                videoId: '49kzVeoM7Ro', // كود الأغنية
-                events: { 'onReady': onPlayerReady }
-            });
-        }
-        function onPlayerReady(event) {
-            // الموسيقى جاهزة وستعمل عند الضغط على OPEN
-        }
     </script>
 </body>
 </html>
