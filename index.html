@@ -1,122 +1,127 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!doctype html>
+<html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<title>دعوة زفاف - بيمن ♥ ايلاريا</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700&display=swap" rel="stylesheet">
-
-<style>
-body {
-    margin: 0;
-    font-family: 'Cairo', sans-serif;
-    background: #000;
-    overflow: hidden;
-}
-
-/* الفيديو */
-video {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* المحتوى بعد الفيديو */
-.content {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    text-align: center;
-    color: white;
-    background: rgba(0,0,0,0.5);
-    padding-top: 80px;
-}
-
-.title {
-    font-size: 45px;
-    text-shadow: 0 0 20px pink;
-}
-
-.btn {
-    margin-top: 20px;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 25px;
-    background: pink;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* ورد متساقط */
-.petal {
-    position: fixed;
-    top: -10px;
-    font-size: 18px;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(360deg);
-    }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <title>B & E - Wedding Invitation</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Cinzel+Decorative:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
 
 <body>
 
-<!-- 🎬 فيديو الباب -->
-<video id="doorVideo" autoplay muted>
-    <source src="door.mp4" type="video/mp4">
-</video>
+  <!-- PAGE 1 LOADING -->
+  <section id="page-loading" class="page active">
+    <div class="loading-bg"></div>
+    <div class="particles" id="particles"></div>
 
-<!-- 💍 المحتوى -->
-<div class="content" id="content">
+    <div class="loading-content">
+      <div class="crest-wrapper">
+        <div class="crest-glow"></div>
+        <div class="crest-text">B & E</div>
+      </div>
 
-    <div class="title">بيمن ♥ ايلاريا</div>
+      <div class="loading-bar-wrap">
+        <div class="loading-bar" id="loading-bar"></div>
+      </div>
+    </div>
+  </section>
 
-    <p>💒 الخميس 17/9/2026 - 8 مساءً</p>
+  <!-- PAGE 2 DOOR -->
+  <section id="page-door" class="page">
+    <div class="door-static-bg"></div>
 
-    <p>⛪ كنيسة رئيس الملائكة ميخائيل</p>
-    <a href="https://maps.app.goo.gl/dkr25pM3ahtUpcbQ9" target="_blank" style="color:pink;">الموقع</a>
+    <div class="door-top-text">
+      <p class="door-pre en-text">Together with their families</p>
+      <p class="door-pre ar-text">بمشاركة عائلتيهما</p>
 
-    <p>🏛️ قاعة رويال بلازا</p>
-    <a href="https://maps.app.goo.gl/PeWPoRHqrrmeuEEKA" target="_blank" style="color:pink;">الموقع</a>
+      <p class="door-names-hero">Bimen Akram <span>&</span> Ilaria Sameh</p>
+      <p class="door-names-hero ar-text">بيمن  <span>&</span> إيلاريا</p>
 
-    <p style="margin-top:20px;">
-        "فَالَّذِي جَمَعَهُ اللهُ لَا يُفَرِّقُهُ إِنْسَانٌ" (متى 19:5-6)
-    </p>
+      <p class="door-subtitle en-text">invite you to open the door to their celebration</p>
+      <p class="door-subtitle ar-text">يدعوانكم لفتح باب الاحتفال</p>
+    </div>
 
-</div>
+    <button id="knock-btn" class="knock-btn">🚪 Knock | إطرق</button>
+  </section>
 
-<!-- 🎵 الأغنية -->
-<audio id="song">
-    <source src="song.mp3" type="audio/mp3">
-</audio>
+  <!-- PAGE 3 DETAILS -->
+  <section id="page-details" class="page">
+    <div class="details-bg"></div>
+    <div class="petals-wrap" id="petals"></div>
 
-<script>
+    <div class="details-hero">
+      <div class="hero-crest-mini">B & E</div>
 
-const video = document.getElementById("doorVideo");
-const content = document.getElementById("content");
-const song = document.getElementById("song");
+      <p class="invite-pre en-text">Together with their families</p>
+      <p class="invite-pre ar-text">بمشاركة عائلتيهما</p>
 
-/* بعد انتهاء الفيديو */
-video.onended = function() {
-    video.style.display = "none";
-    content.style.display = "block";
+      <div class="hero-names">
+        <span>Bimen </span>
+        <span class="amp">&</span>
+        <span>eylaria </span>
+      </div>
 
-    song.play().catch(()=> {
-        console.log("تشغيل الصوت محتاج تفاعل من المستخدم في بعض الأجهزة");
-    });
+      <div class="hero-names ar-text">
+        <span>بيمن </span>
+        <span class="amp">&</span>
+        <span>إيلاريا </span>
+      </div>
 
-    startPetals();
-};
+      <p class="invite-body en-text">invite you to celebrate their wedding ceremony</p>
+      <p class="invite-body ar-text">يدعوانكم للاحتفال بزفافهما</p>
 
-/* ورد */
-function startPetals(){
-    setInterval(()=>{
-        let petal = document.createElement("div");
-        petal.classList.add("pet
+      <div class="verse">
+        “فَالَّذِي جَمَعَهُ اللهُ لَا يُفَرِّقُهُ إِنْسَانٌ”
+        <br>
+        <span>(مت 19: 5-6)</span>
+      </div>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div id="countdown" class="countdown"></div>
+
+    <!-- DETAILS CARDS -->
+    <div class="details-cards">
+
+      <div class="detail-card">
+        <div class="card-icon">📅</div>
+        <div class="card-label">Date | التاريخ</div>
+        <div class="card-value">Thursday 17 September 2026</div>
+      </div>
+
+      <div class="detail-card">
+        <div class="card-icon">🕗</div>
+        <div class="card-label">Time | الوقت</div>
+        <div class="card-value">8:00 PM</div>
+      </div>
+
+      <div class="detail-card">
+        <div class="card-icon">⛪</div>
+        <div class="card-label">Church Ceremony | مراسم الإكليل</div>
+        <div class="card-value">كنيسة رئيس الملائكة ميخائيل - أسيوط</div>
+        <a href="https://maps.app.goo.gl/dkr25pM3ahtUpcbQ9" target="_blank" class="map-btn">🗺 عرض الكنيسة</a>
+      </div>
+
+      <div class="detail-card">
+        <div class="card-icon">🎉</div>
+        <div class="card-label">Reception Hall | قاعة الاحتفال</div>
+        <div class="card-value">قاعة رويال بلازا (دار ضباط الأمن المركزي)</div>
+        <a href="https://maps.app.goo.gl/PeWPoRHqrrmeuEEKA" target="_blank" class="map-btn">🗺 عرض القاعة</a>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      B & E · 2026
+    </footer>
+  </section>
+
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mp3">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
