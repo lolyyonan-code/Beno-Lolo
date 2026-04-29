@@ -77,32 +77,9 @@
             text-decoration: none; font-weight: bold; font-size: 0.9rem;
         }
 
-<div id="ytplayer" style="display:none;"></div>
-
-<script src="https://www.youtube.com/iframe_api"></script>
-
-<script>
-let player;
-
-function onYouTubeIframeAPIReady() {
-player = new YT.Player('ytplayer', {
-height: '0',
-width: '0',
-videoId: '49kzVeoM7Ro',
-events: {
-'onReady': function(event){
-event.target.setVolume(50);
-event.target.playVideo();
-}
-},
-playerVars: {
-'autoplay': 1,
-'loop': 1,
-'playlist': '49kzVeoM7Ro'
-}
-});
-}
-</script>
+        /* إخفاء مشغل يوتيوب */
+        #player { display: none; }
+    </style>
 </head>
 <body>
 
