@@ -1,133 +1,127 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!doctype html>
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دعوة زفاف بيمن & ايلاريا</title>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: #ffffff; font-family: 'Cairo', sans-serif; }
-
-        /* شاشة الغلاف */
-        #envelope {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #ffffff; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 100;
-        }
-
-        /* الورد المتساقط */
-        .petal {
-            position: absolute; top: -20px; background-color: #ffc0cb;
-            border-radius: 150% 0 150% 0; opacity: 0.6;
-            animation: fall linear infinite; z-index: 99;
-        }
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); }
-        }
-
-        #open-btn {
-            padding: 15px 50px; font-size: 22px; cursor: pointer;
-            background: #ffc0cb; border: none; border-radius: 30px;
-            font-family: 'Cairo', sans-serif; color: #000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 102;
-            transition: 0.3s;
-        }
-
-        /* انقسام الشاشة عند الفتح */
-        .door {
-            position: absolute; top: 0; width: 50%; height: 100%;
-            background: white; transition: 1.5s ease-in-out; z-index: 101;
-        }
-        .left-door { left: 0; border-right: 1px solid #fdf2f4; }
-        .right-door { right: 0; }
-
-        .opened .left-door { transform: translateX(-100%); }
-        .opened .right-door { transform: translateX(100%); }
-        .opened #open-btn { display: none; }
-
-        /* محتوى الدعوة الثابت بالخلف */
-        #invitation-card {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; background: #fffcfd;
-            padding: 20px; box-sizing: border-box;
-        }
-
-        .verse { font-family: 'Amiri', serif; font-size: 1.5rem; color: #444; margin-bottom: 20px; line-height: 1.6; }
-        .names { font-size: 2.2rem; font-weight: bold; color: #000; margin: 10px 0; }
-        .details { font-size: 1.1rem; line-height: 1.8; color: #333; }
-        .location-btn {
-            display: inline-block; margin-top: 10px; padding: 5px 15px;
-            background: #fff; border: 1px solid #ffc0cb; border-radius: 15px;
-            color: #d02090; text-decoration: none; font-size: 0.9rem;
-        }
-        .countdown { margin-top: 25px; font-size: 0.9rem; color: #888; border-top: 1px solid #eee; padding-top: 10px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <title>B & E - Wedding Invitation</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Cinzel+Decorative:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
+
 <body>
 
-    <iframe id="youtube-audio" width="0" height="0" src="https://www.youtube.com/embed/49kzVeoM7Ro?enablejsapi=1" frameborder="0"></iframe>
+  <!-- PAGE 1 LOADING -->
+  <section id="page-loading" class="page active">
+    <div class="loading-bg"></div>
+    <div class="particles" id="particles"></div>
 
-    <div id="envelope">
-        <div class="door left-door"></div>
-        <div class="door right-door"></div>
-        <button id="open-btn" onclick="startEverything()">Open</button>
+    <div class="loading-content">
+      <div class="crest-wrapper">
+        <div class="crest-glow"></div>
+        <div class="crest-text">B & E</div>
+      </div>
+
+      <div class="loading-bar-wrap">
+        <div class="loading-bar" id="loading-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 2 DOOR -->
+  <section id="page-door" class="page">
+    <div class="door-static-bg"></div>
+
+    <div class="door-top-text">
+      <p class="door-pre en-text">Together with their families</p>
+      <p class="door-pre ar-text">بمشاركة عائلتيهما</p>
+
+      <p class="door-names-hero">Bimen Akram <span>&</span> Ilaria Sameh</p>
+      <p class="door-names-hero ar-text">بيمن أكرم <span>&</span> إيلاريا سامح</p>
+
+      <p class="door-subtitle en-text">invite you to open the door to their celebration</p>
+      <p class="door-subtitle ar-text">يدعوانكم لفتح باب الاحتفال</p>
     </div>
 
-    <div id="invitation-card">
-        <div class="verse">"فَالَّذِي جَمَعَهُ اللهُ لَا يُفَرِّقُهُ إِنْسَانٌ" (مت 19: 5-6)</div>
-        <div class="names">بيمن & ايلاريا</div>
-        <div class="details">
-            يتشرفون بدعوتكم لحفل الزفاف <br>
-            <b>يوم الخميس 17/9/2026 الساعة 8 مساءً</b> <br><br>
-            كنيسة رئيس الملائكة ميخائيل <br>
-            <a class="location-btn" href="https://maps.google.com/?q=كنيسة+رئيس+الملائكة+ميخائيل" target="_blank">📍 موقع الكنيسة</a> <br><br>
-            قاعة رويال بلازا (دار ضباط الأمن المركزي) <br>
-            <a class="location-btn" href="https://maps.google.com/?q=قاعة+رويال+بلازا" target="_blank">📍 موقع القاعة</a>
-        </div>
-        <div class="countdown" id="timer"></div>
+    <button id="knock-btn" class="knock-btn">🚪 Knock | إطرق</button>
+  </section>
+
+  <!-- PAGE 3 DETAILS -->
+  <section id="page-details" class="page">
+    <div class="details-bg"></div>
+    <div class="petals-wrap" id="petals"></div>
+
+    <div class="details-hero">
+      <div class="hero-crest-mini">B & E</div>
+
+      <p class="invite-pre en-text">Together with their families</p>
+      <p class="invite-pre ar-text">بمشاركة عائلتيهما</p>
+
+      <div class="hero-names">
+        <span>Bimen Akram</span>
+        <span class="amp">&</span>
+        <span>Ilaria Sameh</span>
+      </div>
+
+      <div class="hero-names ar-text">
+        <span>بيمن </span>
+        <span class="amp">&</span>
+        <span>إيلاريا </span>
+      </div>
+
+      <p class="invite-body en-text">invite you to celebrate their wedding ceremony</p>
+      <p class="invite-body ar-text">يدعوانكم للاحتفال بزفافهما</p>
+
+      <div class="verse">
+        “فَالَّذِي جَمَعَهُ اللهُ لَا يُفَرِّقُهُ إِنْسَانٌ”
+        <br>
+        <span>(مت 19: 5-6)</span>
+      </div>
     </div>
 
-    <script>
-        // دالة إنشاء الورد المتساقط تلقائياً
-        function createPetals() {
-            const container = document.getElementById('envelope');
-            for (let i = 0; i < 40; i++) {
-                const petal = document.createElement('div');
-                petal.className = 'petal';
-                petal.style.left = Math.random() * 100 + 'vw';
-                const size = (Math.random() * 15 + 10) + 'px';
-                petal.style.width = size;
-                petal.style.height = size;
-                petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                petal.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(petal);
-            }
-        }
-        createPetals();
+    <!-- COUNTDOWN -->
+    <div id="countdown" class="countdown"></div>
 
-        // دالة الفتح وتشغيل الموسيقى
-        function startEverything() {
-            document.getElementById('envelope').classList.add('opened');
-            
-            // تشغيل الموسيقى عبر الـ Iframe API
-            const iframe = document.getElementById('youtube-audio');
-            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+    <!-- DETAILS CARDS -->
+    <div class="details-cards">
 
-            // إخفاء الغلاف تماماً بعد انتهاء الحركة
-            setTimeout(() => {
-                document.getElementById('envelope').style.zIndex = "-1";
-            }, 1500);
-        }
+      <div class="detail-card">
+        <div class="card-icon">📅</div>
+        <div class="card-label">Date | التاريخ</div>
+        <div class="card-value">Thursday 17 September 2026</div>
+      </div>
 
-        // عد تنازلي بسيط
-        const targetDate = new Date("September 17, 2026 20:00:00").getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            document.getElementById("timer").innerHTML = `متبقي على الفرح ${days} يوم`;
-        }, 1000);
-    </script>
+      <div class="detail-card">
+        <div class="card-icon">🕗</div>
+        <div class="card-label">Time | الوقت</div>
+        <div class="card-value">8:00 PM</div>
+      </div>
+
+      <div class="detail-card">
+        <div class="card-icon">⛪</div>
+        <div class="card-label">Church Ceremony | مراسم الإكليل</div>
+        <div class="card-value">كنيسة رئيس الملائكة ميخائيل - أسيوط</div>
+        <a href="https://maps.app.goo.gl/dkr25pM3ahtUpcbQ9" target="_blank" class="map-btn">🗺 عرض الكنيسة</a>
+      </div>
+
+      <div class="detail-card">
+        <div class="card-icon">🎉</div>
+        <div class="card-label">Reception Hall | قاعة الاحتفال</div>
+        <div class="card-value">قاعة رويال بلازا (دار ضباط الأمن المركزي)</div>
+        <a href="https://maps.app.goo.gl/PeWPoRHqrrmeuEEKA" target="_blank" class="map-btn">🗺 عرض القاعة</a>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      B & E · 2026
+    </footer>
+  </section>
+
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mp3">
+  </audio>
+
+  <script src="script.js"></script>
 </body>
 </html>
