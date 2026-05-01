@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════════
-   WEDDING INVITATION · script.js (Mohamed & Batol)
+   WEDDING INVITATION · script.js (Bemen & Eylaria)
    فيديو بدون صوت + موسيقى خلفية تبدأ مع الفيديو وتستمر بعد انتهائه
    ════════════════════════════════════════════════════════════════════ */
 
@@ -14,16 +14,16 @@ const CONFIG = {
   brideNameAr: "ايلاريا",
 
   // تاريخ ووقت ومكان الزفاف
-  weddingDate: "17 September 2026",
+  weddingDate: "September17, 2026",
   weddingDateAr: "١٧ سبتمبر ٢٠٢٦",
   weddingTime: "8 pm",
-weddingLocation: "Church of the Archangel Michael , Assuit",
-  weddingLocationAr: " كنيسة رئيس الملائكة ميخائيل، أسيوط",
-  weddingMapLink:
+  weddingLocation1: "Church of the Archangel Michael , Assuit",
+  weddingLocationAr1: " كنيسة رئيس الملائكة ميخائيل،  أسيوط",
+  weddingMapLink1:
     "https://maps.app.goo.gl/dkr25pM3ahtUpcbQ9",
-  weddingLocation: "Royal Plaza , Assuit",
-  weddingLocationAr: "قاعة رويال بلازا ( دار ضباط الأمن المركزي )",
-  weddingMapLink:
+weddingLocation2: "Royal Plaza , Assuit",
+  weddingLocationAr2: "قاعة رويال بلازا (دار ضباط الأمن المركزي)، أسيوط",
+  weddingMapLink2:
     "https://maps.app.goo.gl/PeWPoRHqrrmeuEEKA",
 
   // مسارات الملفات
@@ -34,7 +34,12 @@ weddingLocation: "Church of the Archangel Michael , Assuit",
   detailsBg: "assets/images/image2.webp",
   musicUrl: "assets/music/music1.mp3",
 
+  // أرقام واتساب
+  groomWhatsappNumber: "201285401167",
+  brideWhatsappNumber: "201555491018",
 
+  assetsToPreload: [],
+};
 
 CONFIG.assetsToPreload = [
   CONFIG.crestImage,
