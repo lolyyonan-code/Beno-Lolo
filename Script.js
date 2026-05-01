@@ -14,17 +14,13 @@ const CONFIG = {
   brideNameAr: "ايلاريا",
 
   // تاريخ ووقت ومكان الزفاف
-  weddingDate: "September17, 2026",
+  weddingDate: "September 17, 2026",
   weddingDateAr: "١٧ سبتمبر ٢٠٢٦",
   weddingTime: "8 pm",
-  weddingLocation1: "Church of the Archangel Michael , Assuit",
-  weddingLocationAr1: " كنيسة رئيس الملائكة ميخائيل،  أسيوط",
-  weddingMapLink1:
-    "https://maps.app.goo.gl/dkr25pM3ahtUpcbQ9",
-weddingLocation2: "Royal Plaza , Assuit",
-  weddingLocationAr2: "قاعة رويال بلازا (دار ضباط الأمن المركزي)، أسيوط",
-  weddingMapLink2:
-    "https://maps.app.goo.gl/PeWPoRHqrrmeuEEKA",
+  weddingLocation: "Church of the Archangel Michael Followed by Royal Plaza ,Assuit",
+  weddingLocationAr: "كنيسة رئيس الملائكة ميخائيل يليها قاعة رويال بلازا (دار ضباط الأمن المركزي)، أسيوط",
+  weddingMapLink:
+    "https://maps.app.goo.gl/dkr25pM3ahtUpcbQ9 , https://maps.app.goo.gl/PeWPoRHqrrmeuEEKA",
 
   // مسارات الملفات
   crestImage:
@@ -36,7 +32,7 @@ weddingLocation2: "Royal Plaza , Assuit",
 
   // أرقام واتساب
   groomWhatsappNumber: "201285401167",
-  brideWhatsappNumber: "201555491018",
+  brideWhatsappNumber: "201211518750",
 
   assetsToPreload: [],
 };
